@@ -36,7 +36,7 @@ const carnames = [
 const sizes = ['SMALL', 'MEDIUM', 'LARGE'];
 
 module.exports = {
-  async up(queryInterface, Sequelize) {
+  async up(queryInterface) {
     const cars = [];
 
     sizes.forEach((size) => {
@@ -64,7 +64,7 @@ module.exports = {
     await queryInterface.bulkInsert('Cars', cars, {});
   },
 
-  async down(queryInterface, Sequelize) {
+  async down(queryInterface) {
     await queryInterface.bulkDelete('Cars', null, {});
   },
 };

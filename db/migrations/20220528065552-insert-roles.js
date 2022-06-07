@@ -1,5 +1,5 @@
 module.exports = {
-  async up(queryInterface, Sequelize) {
+  async up(queryInterface) {
     const names = [
       'CUSTOMER',
       'ADMIN',
@@ -14,7 +14,7 @@ module.exports = {
     await queryInterface.bulkInsert('Roles', records, {});
   },
 
-  async down(queryInterface, Sequelize) {
+  async down(queryInterface) {
     await queryInterface.bulkDelete('Roles', null, {});
   },
 };

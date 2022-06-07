@@ -11,7 +11,7 @@ const names = [
 ];
 
 module.exports = {
-  async up(queryInterface, Sequelize) {
+  async up(queryInterface) {
     const password = '123456';
     const encryptedPassword = bcrypt.hashSync(password, 10);
     const timestamp = new Date();
@@ -30,7 +30,7 @@ module.exports = {
     await queryInterface.bulkInsert('Users', users, {});
   },
 
-  async down(queryInterface, Sequelize) {
+  async down(queryInterface) {
     await queryInterface.bulkDelete('Users', { name: { [Op.in]: names } }, {});
   },
 };
