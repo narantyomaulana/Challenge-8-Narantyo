@@ -11,5 +11,10 @@
         "ecmaVersion": "latest"
     },
     "rules": {
+        "global-require": "off",
+        "import/no-dynamic-require": "off",
+        "class-methods-use-this": ["error", { "enforceForClassFields": false }],
+        "linebreak-style": ["error", "windows"],
+        "object-curly-newline": ["error", { "multiline": true, "minProperties": 5 }]
     }
 }
