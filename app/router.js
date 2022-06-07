@@ -22,7 +22,14 @@ function apply(app) {
   const userCarModel = UserCar;
 
   const applicationController = new ApplicationController();
-  const authenticationController = new AuthenticationController({ bcrypt, jwt, roleModel, userModel });
+  const authenticationController = new AuthenticationController(
+    {
+      bcrypt,
+      jwt,
+      roleModel,
+      userModel,
+    },
+  );
   const carController = new CarController({ carModel, userCarModel, dayjs });
 
   const { accessControl } = authenticationController;
