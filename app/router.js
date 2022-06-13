@@ -32,7 +32,7 @@ function apply(app) {
   );
   const carController = new CarController({ carModel, userCarModel, dayjs });
 
-  const accessControl = authenticationController;
+  const { accessControl } = authenticationController;
 
   app.get('/', applicationController.handleGetRoot);
 
