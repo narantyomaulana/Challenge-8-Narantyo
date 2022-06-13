@@ -20,7 +20,11 @@ class CarController extends ApplicationController {
 
     res.status(200).json({
       cars,
-      meta: { pagination },
+      meta: {
+        pagination,
+        offset,
+        limit,
+      },
     });
   };
 

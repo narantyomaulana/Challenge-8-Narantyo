@@ -1,15 +1,15 @@
-const request = require("supertest");
-const app = require("../../../../../app");
+const request = require('supertest');
+const app = require('../../../..');
 
-describe("GET /v1/cars/:id", () => {
-    it("should response with 200 as status code", async () => {
-        const id = 1;
-        
-        return await request(app)
-            .get("/v1/cars/" + id)
-            .then((response) => {
-                expect(response.statusCode).toBe(200);
-                expect(response.body).toEqual(response.body);
-            })
-    })
-})
+describe('GET /v1/cars/:id', () => {
+  it('should response with 200 as status code', async () => {
+    const id = 1;
+
+    return request(app)
+      .get(`/v1/cars/${id}`)
+      .then((response) => {
+        expect(response.statusCode).toBe(200);
+        expect(response.body).toEqual(response.body);
+      });
+  });
+});
