@@ -91,6 +91,11 @@ class CarController extends ApplicationController {
         rentEndedAt,
       });
 
+      await this.carModel.update(
+        { isCurrentlyRented: true },
+        { where: { id: car.id } },
+      );
+
       res.status(201).json(userCar);
     } catch (err) {
       next(err);
