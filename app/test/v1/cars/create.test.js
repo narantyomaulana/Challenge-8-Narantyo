@@ -71,6 +71,7 @@ describe('POST /v1/create', () => {
         });
       });
   });
+
   afterAll(async () => {
     const accessToken = await request(app).post('/v1/auth/login').send({
       email: 'admin@binar.co.id',
