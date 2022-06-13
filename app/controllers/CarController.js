@@ -1,6 +1,6 @@
 const { Op } = require('sequelize');
 const ApplicationController = require('./ApplicationController');
-const CarAlreadyRentedError = require('../errors');
+const CarAlreadyRentedError = require('../errors/CarAlreadyRentedError');
 
 class CarController extends ApplicationController {
   constructor({ carModel, userCarModel, dayjs }) {
@@ -20,11 +20,7 @@ class CarController extends ApplicationController {
 
     res.status(200).json({
       cars,
-      meta: {
-        pagination,
-        offset,
-        limit,
-      },
+      meta: { pagination },
     });
   };
 
