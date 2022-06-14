@@ -9,6 +9,29 @@ const image = 'https://source.unsplash.com/500x500';
 describe('POST /v1/create', () => {
   let car;
 
+  it('should response with 422 as status code', async () => {
+    const accessToken = await request(app).post('/v1/auth/login').send({
+      email: 'admin@binar.co.id',
+      password: 'password',
+    });
+
+    return request(app)
+      .post('/v1/cars')
+      .set('Content-Type', 'application/json')
+      .set('Authorization', `Bearer ${accessToken.body.accessToken}`)
+      .send({ })
+      .then((res) => {
+        expect(res.status).toBe(422);
+        expect(res.body).toEqual({
+          error: {
+            name: expect.any(String),
+            message: expect.any(String),
+          },
+        });
+        car = res.body;
+      });
+  });
+
   it('should response with 201 as status code', async () => {
     const accessToken = await request(app).post('/v1/auth/login').send({
       email: 'admin@binar.co.id',

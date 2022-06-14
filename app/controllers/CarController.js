@@ -43,6 +43,8 @@ class CarController extends ApplicationController {
         image,
       } = req.body;
 
+      if (!name) throw new Error('Name must be provided');
+
       const car = await this.carModel.create({
         name,
         price,
@@ -69,6 +71,7 @@ class CarController extends ApplicationController {
       const car = await this.getCarFromRequest(req);
 
       if (!rentEndedAt) rentEndedAt = this.dayjs(rentStartedAt).add(1, 'day');
+      if (!rentStartedAt) throw new Error('rentStartedAt must not be empty!!');
 
       const activeRent = await this.userCarModel.findOne({
         where: {

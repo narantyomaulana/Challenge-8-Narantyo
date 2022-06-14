@@ -78,4 +78,14 @@ describe('POST /v1/cars/:id/rent', () => {
       expect(res.statusCode).toBe(422);
       expect(res.body).toEqual(res.body);
     }));
+
+  it('should response with 500 as status code', async () => request(app)
+    .post(`/v1/cars/${car.body.id}/rent`)
+    .set('Authorization', `Bearer ${accessTokenCustomer.body.accessToken}`)
+    .set('Content-Type', 'application/json')
+    .send({ })
+    .then((res) => {
+      expect(res.statusCode).toBe(500);
+      expect(res.body).toEqual(res.body);
+    }));
 });
